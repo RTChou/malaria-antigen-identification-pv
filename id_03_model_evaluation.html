@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 3 Model evaluation | Malaria vaccine antigen identification for Plasmodium vivax</title>
+  <meta name="description" content="Section 3 Model evaluation | Malaria vaccine antigen identification for Plasmodium vivax" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 3 Model evaluation | Malaria vaccine antigen identification for Plasmodium vivax" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 3 Model evaluation | Malaria vaccine antigen identification for Plasmodium vivax" />
+  
+  
+  
+
+<meta name="author" content="Renee Ti Chou" />
+
+
+<meta name="date" content="2023-06-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="id_02_model_training.html"/>
+<link rel="next" href="id_04_model_comparisons.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.27/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.12.1/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.12.1/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<!-- https://stackoverflow.com/questions/45360998/code-folding-in-bookdown -->
+<script type="text/javascript" src="js/transition.js"></script>
+<script type="text/javascript" src="js/dropdown.js"></script>
+<script>
+var str = '<div class="btn-group pull-right" style="position: fixed; right: 50px; top: 10px; z-index: 200"><button type="button" class="btn btn-default btn-xs dropdown-toggle" id="allCodeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-_extension-text-contrast=""><span>Code</span> <span class="caret"></span></button><ul class="dropdown-menu" style="min-width: 50px;"><li><a id="rmd-show-all-code" href="#">Show All Code</a></li><li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li></ul></div>';
+document.write(str);
+</script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "hide");
+});
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><i>Positive-unlabeled learning for Pv RV</i></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html"><i class="fa fa-check"></i><b>1</b> Data engineering</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#purf-package-installization"><i class="fa fa-check"></i><b>1.1</b> <code>purf</code> package installization</a></li>
+<li class="chapter" data-level="1.2" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#retrieving-p.-vivax-protein-variables"><i class="fa fa-check"></i><b>1.2</b> Retrieving <em>P. vivax</em> protein variables</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#immunological-data-sets"><i class="fa fa-check"></i><b>1.2.1</b> Immunological data sets</a></li>
+<li class="chapter" data-level="1.2.2" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#proteomic-data-sets"><i class="fa fa-check"></i><b>1.2.2</b> Proteomic data sets</a></li>
+<li class="chapter" data-level="1.2.3" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#structural-data-sets"><i class="fa fa-check"></i><b>1.2.3</b> Structural data sets</a></li>
+<li class="chapter" data-level="1.2.4" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#genomic-data-sets"><i class="fa fa-check"></i><b>1.2.4</b> Genomic data sets</a></li>
+<li class="chapter" data-level="1.2.5" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#final-assembly"><i class="fa fa-check"></i><b>1.2.5</b> Final assembly</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="id_01_data_engineering.html"><a href="id_01_data_engineering.html#generating-ml-input"><i class="fa fa-check"></i><b>1.3</b> Generating ML input</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="id_02_model_training.html"><a href="id_02_model_training.html"><i class="fa fa-check"></i><b>2</b> Model training</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#hyper-parameter-tuning-for-purf"><i class="fa fa-check"></i><b>2.1</b> Hyper-parameter tuning for PURF</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#analysis"><i class="fa fa-check"></i><b>2.1.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1.1.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#pv-data-set"><i class="fa fa-check"></i><b>2.1.1.1</b> Pv data set</a></li>
+<li class="chapter" data-level="2.1.1.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#pv-pf-combined-data-set"><i class="fa fa-check"></i><b>2.1.1.2</b> Pv + Pf combined data set</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#plotting"><i class="fa fa-check"></i><b>2.1.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="2.1.2.1" data-path="id_02_model_training.html"><a href="id_02_model_training.html#pv-data-set-1"><i class="fa fa-check"></i><b>2.1.2.1</b> Pv data set</a></li>
+<li class="chapter" data-level="2.1.2.2" data-path="id_02_model_training.html"><a href="id_02_model_training.html#bimodal-distribution-plot"><i class="fa fa-check"></i><b>2.1.2.2</b> Bimodal distribution plot</a></li>
+<li class="chapter" data-level="2.1.2.3" data-path="id_02_model_training.html"><a href="id_02_model_training.html#known-antigen-ranking"><i class="fa fa-check"></i><b>2.1.2.3</b> Known antigen ranking</a></li>
+<li class="chapter" data-level="2.1.2.4" data-path="id_02_model_training.html"><a href="id_02_model_training.html#pv-pf-combined-data-set-1"><i class="fa fa-check"></i><b>2.1.2.4</b> Pv + Pf combined data set</a></li>
+<li class="chapter" data-level="2.1.2.5" data-path="id_02_model_training.html"><a href="id_02_model_training.html#bimodal-distribution-plot-1"><i class="fa fa-check"></i><b>2.1.2.5</b> Bimodal distribution plot</a></li>
+<li class="chapter" data-level="2.1.2.6" data-path="id_02_model_training.html"><a href="id_02_model_training.html#known-antigen-ranking-1"><i class="fa fa-check"></i><b>2.1.2.6</b> Known antigen ranking</a></li>
+</ul></li>
+<li class="chapter" data-level="2.1.3" data-path="id_02_model_training.html"><a href="id_02_model_training.html#results-for-positive-level-0.5"><i class="fa fa-check"></i><b>2.1.3</b> Results for positive level = 0.5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html"><i class="fa fa-check"></i><b>3</b> Model evaluation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#known-antigen-prediction-accuracy"><i class="fa fa-check"></i><b>3.1</b> Known antigen prediction accuracy</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#analysis-1"><i class="fa fa-check"></i><b>3.1.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1.1.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#pv-model-cross-species-predictions"><i class="fa fa-check"></i><b>3.1.1.1</b> Pv model cross-species predictions</a></li>
+<li class="chapter" data-level="3.1.1.2" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#pf-model-cross-species-predictions"><i class="fa fa-check"></i><b>3.1.1.2</b> Pf model cross-species predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#adversarial-controls"><i class="fa fa-check"></i><b>3.2</b> Adversarial controls</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#analysis-2"><i class="fa fa-check"></i><b>3.2.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="3.2.1.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#pv-data-set-2"><i class="fa fa-check"></i><b>3.2.1.1</b> Pv data set</a></li>
+<li class="chapter" data-level="3.2.1.2" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#pv-pf-combined-data-set-2"><i class="fa fa-check"></i><b>3.2.1.2</b> Pv + Pf combined data set</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2.2" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#plotting-1"><i class="fa fa-check"></i><b>3.2.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="3.2.2.1" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#mean-differences-in-scores"><i class="fa fa-check"></i><b>3.2.2.1</b> Mean differences in scores</a></li>
+<li class="chapter" data-level="3.2.2.2" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#investigation-of-known-antigen-groups"><i class="fa fa-check"></i><b>3.2.2.2</b> Investigation of known antigen groups</a></li>
+<li class="chapter" data-level="3.2.2.3" data-path="id_03_model_evaluation.html"><a href="id_03_model_evaluation.html#labeled-known-antigen-accuracies"><i class="fa fa-check"></i><b>3.2.2.3</b> Labeled known antigen accuracies</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html"><i class="fa fa-check"></i><b>4</b> Model comparisons</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#known-antigen-score-comparisons"><i class="fa fa-check"></i><b>4.1</b> Known antigen score comparisons</a></li>
+<li class="chapter" data-level="4.2" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#known-antigen-prediction-summary"><i class="fa fa-check"></i><b>4.2</b> Known antigen prediction summary</a></li>
+<li class="chapter" data-level="4.3" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#score-and-species-association"><i class="fa fa-check"></i><b>4.3</b> Score and species association</a></li>
+<li class="chapter" data-level="4.4" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#tree-depth-analysis"><i class="fa fa-check"></i><b>4.4</b> Tree depth analysis</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#analysis-3"><i class="fa fa-check"></i><b>4.4.1</b> Analysis</a></li>
+<li class="chapter" data-level="4.4.2" data-path="id_04_model_comparisons.html"><a href="id_04_model_comparisons.html#plotting-2"><i class="fa fa-check"></i><b>4.4.2</b> Plotting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html"><i class="fa fa-check"></i><b>5</b> Model interpretation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#proximity-matrix-calculation"><i class="fa fa-check"></i><b>5.1</b> Proximity matrix calculation</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#analysis-4"><i class="fa fa-check"></i><b>5.1.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1.1.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-data-set-3"><i class="fa fa-check"></i><b>5.1.1.1</b> Pv data set</a></li>
+<li class="chapter" data-level="5.1.1.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-pf-combined-data-set-3"><i class="fa fa-check"></i><b>5.1.1.2</b> Pv + Pf combined data set</a></li>
+</ul></li>
+<li class="chapter" data-level="5.1.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#plotting-3"><i class="fa fa-check"></i><b>5.1.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="5.1.2.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-pf-combined-data-set-4"><i class="fa fa-check"></i><b>5.1.2.1</b> Pv + Pf combined data set</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#clustering-of-predicted-positives"><i class="fa fa-check"></i><b>5.2</b> Clustering of predicted positives</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#analysis-5"><i class="fa fa-check"></i><b>5.2.1</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#comparison-of-amino-acid-frequencies-between-species"><i class="fa fa-check"></i><b>5.3</b> Comparison of amino acid frequencies between species</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#analysis-6"><i class="fa fa-check"></i><b>5.3.1</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#variable-importance"><i class="fa fa-check"></i><b>5.4</b> Variable importance</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#analysis-7"><i class="fa fa-check"></i><b>5.4.1</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="5.4.1.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-data-set-4"><i class="fa fa-check"></i><b>5.4.1.1</b> Pv data set</a></li>
+<li class="chapter" data-level="5.4.1.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-pf-combined-data-set-5"><i class="fa fa-check"></i><b>5.4.1.2</b> Pv + Pf combined data set</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#plotting-4"><i class="fa fa-check"></i><b>5.4.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="5.4.2.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-data-set-5"><i class="fa fa-check"></i><b>5.4.2.1</b> Pv data set</a></li>
+<li class="chapter" data-level="5.4.2.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#pv-pf-combined-data-set-6"><i class="fa fa-check"></i><b>5.4.2.2</b> Pv + Pf combined data set</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4.3" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#comparison-of-top-10-important-variables"><i class="fa fa-check"></i><b>5.4.3</b> Comparison of top 10 important variables</a>
+<ul>
+<li class="chapter" data-level="5.4.3.1" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#venn-diagram"><i class="fa fa-check"></i><b>5.4.3.1</b> Venn diagram</a></li>
+<li class="chapter" data-level="5.4.3.2" data-path="id_05_model_interpretation.html"><a href="id_05_model_interpretation.html#top-10-variables-from-combined-model"><i class="fa fa-check"></i><b>5.4.3.2</b> Top 10 variables from combined model</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html"><i class="fa fa-check"></i><b>6</b> Top candidate comparisons</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#clustering-analysis"><i class="fa fa-check"></i><b>6.1</b> Clustering analysis</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#analysis-8"><i class="fa fa-check"></i><b>6.1.1</b> Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#gene-ontology-analysis"><i class="fa fa-check"></i><b>6.2</b> Gene ontology analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#analysis-9"><i class="fa fa-check"></i><b>6.2.1</b> Analysis</a></li>
+<li class="chapter" data-level="6.2.2" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#plotting-5"><i class="fa fa-check"></i><b>6.2.2</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#candidate-antigen-characterization"><i class="fa fa-check"></i><b>6.3</b> Candidate antigen characterization</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="id_06_top_candidate_comparisons.html"><a href="id_06_top_candidate_comparisons.html#processing-table"><i class="fa fa-check"></i><b>6.3.1</b> Processing table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="id_07_summary_of_candidates.html"><a href="id_07_summary_of_candidates.html"><i class="fa fa-check"></i><b>7</b> Summary of candidates</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Malaria vaccine antigen identification for <em>Plasmodium vivax</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="id_03_model_evaluation" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Section 3</span> Model evaluation<a href="id_03_model_evaluation.html#id_03_model_evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="known-antigen-prediction-accuracy" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Known antigen prediction accuracy<a href="id_03_model_evaluation.html#known-antigen-prediction-accuracy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analysis-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Analysis<a href="id_03_model_evaluation.html#analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>In Python: </strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb33-1"><a href="id_03_model_evaluation.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb33-2"><a href="id_03_model_evaluation.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;/Users/renee/Library/r-miniconda/envs/purf/bin/python&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb34-1"><a href="id_03_model_evaluation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-2"><a href="id_03_model_evaluation.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb34-3"><a href="id_03_model_evaluation.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-4"><a href="id_03_model_evaluation.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb34-5"><a href="id_03_model_evaluation.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb34-6"><a href="id_03_model_evaluation.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance</span>
+<span id="cb34-7"><a href="id_03_model_evaluation.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> purf.pu_ensemble <span class="im">import</span> PURandomForestClassifier</span>
+<span id="cb34-8"><a href="id_03_model_evaluation.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb34-9"><a href="id_03_model_evaluation.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb34-10"><a href="id_03_model_evaluation.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb34-11"><a href="id_03_model_evaluation.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> session_info</span></code></pre></div>
+<div id="pv-model-cross-species-predictions" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Pv model cross-species predictions<a href="id_03_model_evaluation.html#pv-model-cross-species-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb35-1"><a href="id_03_model_evaluation.html#cb35-1" aria-hidden="true" tabindex="-1"></a>data_ <span class="op">=</span> pd.read_csv(<span class="st">&#39;./other_data/pv_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-2"><a href="id_03_model_evaluation.html#cb35-2" aria-hidden="true" tabindex="-1"></a>X_ <span class="op">=</span> data_.iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb35-3"><a href="id_03_model_evaluation.html#cb35-3" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;median&#39;</span>)</span>
+<span id="cb35-4"><a href="id_03_model_evaluation.html#cb35-4" aria-hidden="true" tabindex="-1"></a>imputer.fit(X_)</span>
+<span id="cb35-5"><a href="id_03_model_evaluation.html#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="id_03_model_evaluation.html#cb35-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">&#39;./other_data/pf_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-7"><a href="id_03_model_evaluation.html#cb35-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb35-8"><a href="id_03_model_evaluation.html#cb35-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array(data.antigen_label)</span>
+<span id="cb35-9"><a href="id_03_model_evaluation.html#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="id_03_model_evaluation.html#cb35-10" aria-hidden="true" tabindex="-1"></a>pickle_path <span class="op">=</span> <span class="st">&#39;./pv_0.5_purf_tree_filtering.pkl&#39;</span></span>
+<span id="cb35-11"><a href="id_03_model_evaluation.html#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="id_03_model_evaluation.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(pickle_path, <span class="st">&#39;rb&#39;</span>) <span class="im">as</span> infile:</span>
+<span id="cb35-13"><a href="id_03_model_evaluation.html#cb35-13" aria-hidden="true" tabindex="-1"></a>    purf <span class="op">=</span> pickle.load(infile)</span>
+<span id="cb35-14"><a href="id_03_model_evaluation.html#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="id_03_model_evaluation.html#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert float type</span></span>
+<span id="cb35-16"><a href="id_03_model_evaluation.html#cb35-16" aria-hidden="true" tabindex="-1"></a>X[X.select_dtypes(np.float64).columns] <span class="op">=</span> X.select_dtypes(np.float64).astype(np.float32)</span>
+<span id="cb35-17"><a href="id_03_model_evaluation.html#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute missing values</span></span>
+<span id="cb35-18"><a href="id_03_model_evaluation.html#cb35-18" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> imputer.transform(X)</span>
+<span id="cb35-19"><a href="id_03_model_evaluation.html#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="id_03_model_evaluation.html#cb35-20" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> purf[<span class="st">&#39;model&#39;</span>].predict_proba(X)[:,<span class="dv">1</span>]</span>
+<span id="cb35-21"><a href="id_03_model_evaluation.html#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="id_03_model_evaluation.html#cb35-22" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> pd.DataFrame({<span class="st">&#39;protein_id&#39;</span>: data.index, <span class="st">&#39;antigen_label&#39;</span>: y})</span>
+<span id="cb35-23"><a href="id_03_model_evaluation.html#cb35-23" aria-hidden="true" tabindex="-1"></a>res[<span class="st">&#39;OOB score filtered&#39;</span>] <span class="op">=</span> pred</span>
+<span id="cb35-24"><a href="id_03_model_evaluation.html#cb35-24" aria-hidden="true" tabindex="-1"></a>res.to_csv(<span class="st">&#39;~/Downloads/pv_single_cross_predictions.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+<div id="pf-model-cross-species-predictions" class="section level4 hasAnchor" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Pf model cross-species predictions<a href="id_03_model_evaluation.html#pf-model-cross-species-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb36-1"><a href="id_03_model_evaluation.html#cb36-1" aria-hidden="true" tabindex="-1"></a>data_ <span class="op">=</span> pd.read_csv(<span class="st">&#39;./other_data/pf_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-2"><a href="id_03_model_evaluation.html#cb36-2" aria-hidden="true" tabindex="-1"></a>X_ <span class="op">=</span> data_.iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb36-3"><a href="id_03_model_evaluation.html#cb36-3" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;median&#39;</span>)</span>
+<span id="cb36-4"><a href="id_03_model_evaluation.html#cb36-4" aria-hidden="true" tabindex="-1"></a>imputer.fit(X_)</span>
+<span id="cb36-5"><a href="id_03_model_evaluation.html#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="id_03_model_evaluation.html#cb36-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">&#39;./other_data/pv_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb36-7"><a href="id_03_model_evaluation.html#cb36-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb36-8"><a href="id_03_model_evaluation.html#cb36-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array(data.antigen_label)</span>
+<span id="cb36-9"><a href="id_03_model_evaluation.html#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="id_03_model_evaluation.html#cb36-10" aria-hidden="true" tabindex="-1"></a>pickle_path <span class="op">=</span> <span class="st">&#39;./pf_0.5_purf_tree_filtering.pkl&#39;</span></span>
+<span id="cb36-11"><a href="id_03_model_evaluation.html#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="id_03_model_evaluation.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(pickle_path, <span class="st">&#39;rb&#39;</span>) <span class="im">as</span> infile:</span>
+<span id="cb36-13"><a href="id_03_model_evaluation.html#cb36-13" aria-hidden="true" tabindex="-1"></a>    purf <span class="op">=</span> pickle.load(infile)</span>
+<span id="cb36-14"><a href="id_03_model_evaluation.html#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="id_03_model_evaluation.html#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert float type</span></span>
+<span id="cb36-16"><a href="id_03_model_evaluation.html#cb36-16" aria-hidden="true" tabindex="-1"></a>X[X.select_dtypes(np.float64).columns] <span class="op">=</span> X.select_dtypes(np.float64).astype(np.float32)</span>
+<span id="cb36-17"><a href="id_03_model_evaluation.html#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Impute missing values</span></span>
+<span id="cb36-18"><a href="id_03_model_evaluation.html#cb36-18" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> imputer.transform(X)</span>
+<span id="cb36-19"><a href="id_03_model_evaluation.html#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-20"><a href="id_03_model_evaluation.html#cb36-20" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> purf[<span class="st">&#39;model&#39;</span>].predict_proba(X)[:,<span class="dv">1</span>]</span>
+<span id="cb36-21"><a href="id_03_model_evaluation.html#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="id_03_model_evaluation.html#cb36-22" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> pd.DataFrame({<span class="st">&#39;protein_id&#39;</span>: data.index, <span class="st">&#39;antigen_label&#39;</span>: y})</span>
+<span id="cb36-23"><a href="id_03_model_evaluation.html#cb36-23" aria-hidden="true" tabindex="-1"></a>res[<span class="st">&#39;OOB score filtered&#39;</span>] <span class="op">=</span> pred</span>
+<span id="cb36-24"><a href="id_03_model_evaluation.html#cb36-24" aria-hidden="true" tabindex="-1"></a>res.to_csv(<span class="st">&#39;~/Downloads/pf_single_cross_predictions.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb37-1"><a href="id_03_model_evaluation.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb38-1"><a href="id_03_model_evaluation.html#cb38-1" aria-hidden="true" tabindex="-1"></a>single_model_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_single_pv_single_scores.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb38-2"><a href="id_03_model_evaluation.html#cb38-2" aria-hidden="true" tabindex="-1"></a>cross_pred_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_single_pv_single_cross_predictions.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb38-3"><a href="id_03_model_evaluation.html#cb38-3" aria-hidden="true" tabindex="-1"></a>combined_model_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/supplementary_data_5_pfpv_purf_oob_predictions.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb39-1"><a href="id_03_model_evaluation.html#cb39-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb39-2"><a href="id_03_model_evaluation.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PURF model&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Pv single model&quot;</span>, <span class="st">&quot;Pf single model&quot;</span>, <span class="st">&quot;Pv + Pf combined model&quot;</span>),</span>
+<span id="cb39-3"><a href="id_03_model_evaluation.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Accuracy for Pv known antigens&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb39-4"><a href="id_03_model_evaluation.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-5"><a href="id_03_model_evaluation.html#cb39-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-6"><a href="id_03_model_evaluation.html#cb39-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]),</span>
+<span id="cb39-7"><a href="id_03_model_evaluation.html#cb39-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]))</span>
+<span id="cb39-8"><a href="id_03_model_evaluation.html#cb39-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb39-9"><a href="id_03_model_evaluation.html#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-10"><a href="id_03_model_evaluation.html#cb39-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-11"><a href="id_03_model_evaluation.html#cb39-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]),</span>
+<span id="cb39-12"><a href="id_03_model_evaluation.html#cb39-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]))</span>
+<span id="cb39-13"><a href="id_03_model_evaluation.html#cb39-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb39-14"><a href="id_03_model_evaluation.html#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-15"><a href="id_03_model_evaluation.html#cb39-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-16"><a href="id_03_model_evaluation.html#cb39-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]),</span>
+<span id="cb39-17"><a href="id_03_model_evaluation.html#cb39-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]))</span>
+<span id="cb39-18"><a href="id_03_model_evaluation.html#cb39-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-19"><a href="id_03_model_evaluation.html#cb39-19" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb39-20"><a href="id_03_model_evaluation.html#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Accuracy for Pf known antigens&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb39-21"><a href="id_03_model_evaluation.html#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-22"><a href="id_03_model_evaluation.html#cb39-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-23"><a href="id_03_model_evaluation.html#cb39-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]),</span>
+<span id="cb39-24"><a href="id_03_model_evaluation.html#cb39-24" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]))</span>
+<span id="cb39-25"><a href="id_03_model_evaluation.html#cb39-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb39-26"><a href="id_03_model_evaluation.html#cb39-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-27"><a href="id_03_model_evaluation.html#cb39-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-28"><a href="id_03_model_evaluation.html#cb39-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]),</span>
+<span id="cb39-29"><a href="id_03_model_evaluation.html#cb39-29" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]))</span>
+<span id="cb39-30"><a href="id_03_model_evaluation.html#cb39-30" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb39-31"><a href="id_03_model_evaluation.html#cb39-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb39-32"><a href="id_03_model_evaluation.html#cb39-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]),</span>
+<span id="cb39-33"><a href="id_03_model_evaluation.html#cb39-33" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; / &quot;</span>, <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]),</span>
+<span id="cb39-34"><a href="id_03_model_evaluation.html#cb39-34" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot; = &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]) <span class="sc">/</span> <span class="fu">nrow</span>(combined_model_res[combined_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combined_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]))</span>
+<span id="cb39-35"><a href="id_03_model_evaluation.html#cb39-35" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-36"><a href="id_03_model_evaluation.html#cb39-36" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb39-37"><a href="id_03_model_evaluation.html#cb39-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb39-38"><a href="id_03_model_evaluation.html#cb39-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-39"><a href="id_03_model_evaluation.html#cb39-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-40"><a href="id_03_model_evaluation.html#cb39-40" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="st">&quot;./rdata/known_antigen_pred_acc.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb40-1"><a href="id_03_model_evaluation.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./rdata/known_antigen_pred_acc.RData&quot;</span>)</span>
+<span id="cb40-2"><a href="id_03_model_evaluation.html#cb40-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="id_03_model_evaluation.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4b4973226b5bcba9e263" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4b4973226b5bcba9e263">{"x":{"filter":"none","vertical":false,"data":[["Pf single model","Pv single model","Pf + Pv combined model"],["49 / 52 = 0.94","47 / 52 = 0.90","52 / 52 = 1.00"],["34 / 38 = 0.89","33 / 38 = 0.87","38 / 38 = 1.00"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>PURF model<\/th>\n      <th>Accuracy for Pf known antigens<\/th>\n      <th>Accuracy for Pv known antigens<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb41-1"><a href="id_03_model_evaluation.html#cb41-1" aria-hidden="true" tabindex="-1"></a>pv_antigens <span class="ot">&lt;-</span> single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-2"><a href="id_03_model_evaluation.html#cb41-2" aria-hidden="true" tabindex="-1"></a>pv_model_pf_antigens <span class="ot">&lt;-</span> cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-3"><a href="id_03_model_evaluation.html#cb41-3" aria-hidden="true" tabindex="-1"></a>pv_model_pv_antigens <span class="ot">&lt;-</span> single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-4"><a href="id_03_model_evaluation.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="id_03_model_evaluation.html#cb41-5" aria-hidden="true" tabindex="-1"></a>pf_antigens <span class="ot">&lt;-</span> single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-6"><a href="id_03_model_evaluation.html#cb41-6" aria-hidden="true" tabindex="-1"></a>pf_model_pf_antigens <span class="ot">&lt;-</span> single_model_res[single_model_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pf&quot;</span> <span class="sc">&amp;</span> single_model_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-7"><a href="id_03_model_evaluation.html#cb41-7" aria-hidden="true" tabindex="-1"></a>pf_model_pv_antigens <span class="ot">&lt;-</span> cross_pred_res[cross_pred_res<span class="sc">$</span>antigen_label <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;pv&quot;</span> <span class="sc">&amp;</span> cross_pred_res<span class="sc">$</span><span class="st">`</span><span class="at">OOB score filtered</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, ]<span class="sc">$</span>protein_id</span>
+<span id="cb41-8"><a href="id_03_model_evaluation.html#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="id_03_model_evaluation.html#cb41-9" aria-hidden="true" tabindex="-1"></a>pv_intersect <span class="ot">&lt;-</span> <span class="fu">intersect</span>(pf_model_pv_antigens, pv_model_pv_antigens)</span>
+<span id="cb41-10"><a href="id_03_model_evaluation.html#cb41-10" aria-hidden="true" tabindex="-1"></a>pf_intersect <span class="ot">&lt;-</span> <span class="fu">intersect</span>(pf_model_pf_antigens, pv_model_pf_antigens)</span>
+<span id="cb41-11"><a href="id_03_model_evaluation.html#cb41-11" aria-hidden="true" tabindex="-1"></a>pv_union <span class="ot">&lt;-</span> <span class="fu">union</span>(pf_model_pv_antigens, pv_model_pv_antigens)</span>
+<span id="cb41-12"><a href="id_03_model_evaluation.html#cb41-12" aria-hidden="true" tabindex="-1"></a>pf_union <span class="ot">&lt;-</span> <span class="fu">union</span>(pf_model_pf_antigens, pv_model_pf_antigens)</span>
+<span id="cb41-13"><a href="id_03_model_evaluation.html#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="id_03_model_evaluation.html#cb41-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-15"><a href="id_03_model_evaluation.html#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Set&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Pv model only&quot;</span>, <span class="st">&quot;Intersect&quot;</span>, <span class="st">&quot;Pf model only&quot;</span>, <span class="st">&quot;Complement&quot;</span>),</span>
+<span id="cb41-16"><a href="id_03_model_evaluation.html#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Pv known antigens&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb41-17"><a href="id_03_model_evaluation.html#cb41-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pv_model_pv_antigens[<span class="sc">!</span>pv_model_pv_antigens <span class="sc">%in%</span> pv_intersect], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>),</span>
+<span id="cb41-18"><a href="id_03_model_evaluation.html#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">length</span>(pv_intersect),</span>
+<span id="cb41-19"><a href="id_03_model_evaluation.html#cb41-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pf_model_pv_antigens[<span class="sc">!</span>pf_model_pv_antigens <span class="sc">%in%</span> pv_intersect], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>),</span>
+<span id="cb41-20"><a href="id_03_model_evaluation.html#cb41-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pv_antigens[<span class="sc">!</span>pv_antigens <span class="sc">%in%</span> pv_union], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb41-21"><a href="id_03_model_evaluation.html#cb41-21" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb41-22"><a href="id_03_model_evaluation.html#cb41-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Pf known antigens&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb41-23"><a href="id_03_model_evaluation.html#cb41-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pv_model_pf_antigens[<span class="sc">!</span>pv_model_pf_antigens <span class="sc">%in%</span> pf_intersect], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>),</span>
+<span id="cb41-24"><a href="id_03_model_evaluation.html#cb41-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">length</span>(pf_intersect),</span>
+<span id="cb41-25"><a href="id_03_model_evaluation.html#cb41-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pf_model_pf_antigens[<span class="sc">!</span>pf_model_pf_antigens <span class="sc">%in%</span> pf_intersect], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>),</span>
+<span id="cb41-26"><a href="id_03_model_evaluation.html#cb41-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(pf_antigens[<span class="sc">!</span>pf_antigens <span class="sc">%in%</span> pf_union], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb41-27"><a href="id_03_model_evaluation.html#cb41-27" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb41-28"><a href="id_03_model_evaluation.html#cb41-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb41-29"><a href="id_03_model_evaluation.html#cb41-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-30"><a href="id_03_model_evaluation.html#cb41-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-31"><a href="id_03_model_evaluation.html#cb41-31" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="st">&quot;./rdata/known_antigen_pred_set_analysis.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb42-1"><a href="id_03_model_evaluation.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./rdata/known_antigen_pred_set_analysis.RData&quot;</span>)</span>
+<span id="cb42-2"><a href="id_03_model_evaluation.html#cb42-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="id_03_model_evaluation.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d4ca1f59df1fc1a047a4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d4ca1f59df1fc1a047a4">{"x":{"filter":"none","vertical":false,"data":[["Pf model only","Intersect","Pv model only","Complement"],["PF3D7_0316000.1-p1, PF3D7_0424100.1-p1, PF3D7_1130200.1-p1, PF3D7_1302100.1-p1, PF3D7_1302200.1-p1","44","PF3D7_0405200.1-p1, PF3D7_0419500.1-p1, PF3D7_1015900.1-p1",""],["PVP01_0934200.1-p1, PVP01_1136400.1-p1","32","PVP01_0210500.1-p1","PVP01_0532400.1-p1, PVP01_0707700.1-p1, PVP01_1026000.1-p1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Set<\/th>\n      <th>Pf known antigens<\/th>\n      <th>Pv known antigens<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="adversarial-controls" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Adversarial controls<a href="id_03_model_evaluation.html#adversarial-controls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analysis-2" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Analysis<a href="id_03_model_evaluation.html#analysis-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>In Python: </strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb43-1"><a href="id_03_model_evaluation.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb43-2"><a href="id_03_model_evaluation.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;/Users/renee/Library/r-miniconda/envs/purf/bin/python&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb44-1"><a href="id_03_model_evaluation.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="id_03_model_evaluation.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.utils <span class="im">import</span> shuffle</span>
+<span id="cb44-3"><a href="id_03_model_evaluation.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-4"><a href="id_03_model_evaluation.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb44-5"><a href="id_03_model_evaluation.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb44-6"><a href="id_03_model_evaluation.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> purf.pu_ensemble <span class="im">import</span> PURandomForestClassifier</span>
+<span id="cb44-7"><a href="id_03_model_evaluation.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb44-8"><a href="id_03_model_evaluation.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance</span>
+<span id="cb44-9"><a href="id_03_model_evaluation.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
+<span id="cb44-10"><a href="id_03_model_evaluation.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble._forest <span class="im">import</span> _generate_unsampled_indices</span>
+<span id="cb44-11"><a href="id_03_model_evaluation.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb44-12"><a href="id_03_model_evaluation.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb44-13"><a href="id_03_model_evaluation.html#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> session_info</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb45-1"><a href="id_03_model_evaluation.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># private function for train_purf()</span></span>
+<span id="cb45-2"><a href="id_03_model_evaluation.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _get_ref_antigen_stats(idx, tree, X, y, ref_indices, max_samples<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb45-3"><a href="id_03_model_evaluation.html#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> max_samples <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb45-4"><a href="id_03_model_evaluation.html#cb45-4" aria-hidden="true" tabindex="-1"></a>        max_samples <span class="op">=</span> y.shape[<span class="dv">0</span>]</span>
+<span id="cb45-5"><a href="id_03_model_evaluation.html#cb45-5" aria-hidden="true" tabindex="-1"></a>    oob_indices <span class="op">=</span> _generate_unsampled_indices(tree.random_state, y.shape[<span class="dv">0</span>], max_samples)</span>
+<span id="cb45-6"><a href="id_03_model_evaluation.html#cb45-6" aria-hidden="true" tabindex="-1"></a>    ref_oob <span class="op">=</span> [i <span class="kw">in</span> oob_indices <span class="cf">for</span> i <span class="kw">in</span> ref_indices]</span>
+<span id="cb45-7"><a href="id_03_model_evaluation.html#cb45-7" aria-hidden="true" tabindex="-1"></a>    ref_pred <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb45-8"><a href="id_03_model_evaluation.html#cb45-8" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> tree.predict_proba(X[ref_indices,:], check_input<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb45-9"><a href="id_03_model_evaluation.html#cb45-9" aria-hidden="true" tabindex="-1"></a>    ref_pred <span class="op">=</span> pred[:,<span class="dv">1</span>]</span>
+<span id="cb45-10"><a href="id_03_model_evaluation.html#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ref_oob, ref_pred</span>
+<span id="cb45-11"><a href="id_03_model_evaluation.html#cb45-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-12"><a href="id_03_model_evaluation.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_purf(features, outcome, pos_level<span class="op">=</span><span class="fl">0.5</span>, purf<span class="op">=</span><span class="va">None</span>, tree_filtering<span class="op">=</span><span class="va">False</span>, ref_antigens<span class="op">=</span><span class="va">None</span>, n_jobs<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb45-13"><a href="id_03_model_evaluation.html#cb45-13" aria-hidden="true" tabindex="-1"></a>    features, outcome <span class="op">=</span> shuffle(features, outcome, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-14"><a href="id_03_model_evaluation.html#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Imputation</span></span>
+<span id="cb45-15"><a href="id_03_model_evaluation.html#cb45-15" aria-hidden="true" tabindex="-1"></a>    imputer <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;median&#39;</span>)</span>
+<span id="cb45-16"><a href="id_03_model_evaluation.html#cb45-16" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> imputer.fit_transform(features)</span>
+<span id="cb45-17"><a href="id_03_model_evaluation.html#cb45-17" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> pd.DataFrame(X, index<span class="op">=</span>features.index, columns<span class="op">=</span>features.columns)</span>
+<span id="cb45-18"><a href="id_03_model_evaluation.html#cb45-18" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> outcome</span>
+<span id="cb45-19"><a href="id_03_model_evaluation.html#cb45-19" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> X</span>
+<span id="cb45-20"><a href="id_03_model_evaluation.html#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;There are </span><span class="sc">%d</span><span class="st"> positives out of </span><span class="sc">%d</span><span class="st"> samples before feature space weighting.&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(y), <span class="bu">len</span>(y)))</span>
+<span id="cb45-21"><a href="id_03_model_evaluation.html#cb45-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Feature space weighting</span></span>
+<span id="cb45-22"><a href="id_03_model_evaluation.html#cb45-22" aria-hidden="true" tabindex="-1"></a>    lab_pos <span class="op">=</span> X.loc[y<span class="op">==</span><span class="dv">1</span>,:]</span>
+<span id="cb45-23"><a href="id_03_model_evaluation.html#cb45-23" aria-hidden="true" tabindex="-1"></a>    median <span class="op">=</span> np.median(lab_pos, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-24"><a href="id_03_model_evaluation.html#cb45-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Feature space weighting</span></span>
+<span id="cb45-25"><a href="id_03_model_evaluation.html#cb45-25" aria-hidden="true" tabindex="-1"></a>    lab_pos <span class="op">=</span> X.loc[y<span class="op">==</span><span class="dv">1</span>,:]</span>
+<span id="cb45-26"><a href="id_03_model_evaluation.html#cb45-26" aria-hidden="true" tabindex="-1"></a>    median <span class="op">=</span> np.median(lab_pos, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-27"><a href="id_03_model_evaluation.html#cb45-27" aria-hidden="true" tabindex="-1"></a>    scaler <span class="op">=</span> MinMaxScaler(feature_range<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb45-28"><a href="id_03_model_evaluation.html#cb45-28" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb45-29"><a href="id_03_model_evaluation.html#cb45-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(lab_pos.shape[<span class="dv">0</span>]):</span>
+<span id="cb45-30"><a href="id_03_model_evaluation.html#cb45-30" aria-hidden="true" tabindex="-1"></a>        dist.append(distance.euclidean(lab_pos.iloc[i, :], median))</span>
+<span id="cb45-31"><a href="id_03_model_evaluation.html#cb45-31" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> np.asarray(dist).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb45-32"><a href="id_03_model_evaluation.html#cb45-32" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> np.<span class="bu">round</span>(scaler.fit_transform(dist))</span>
+<span id="cb45-33"><a href="id_03_model_evaluation.html#cb45-33" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> np.array(counts, dtype<span class="op">=</span>np.int64)[:, <span class="dv">0</span>]</span>
+<span id="cb45-34"><a href="id_03_model_evaluation.html#cb45-34" aria-hidden="true" tabindex="-1"></a>    X_temp <span class="op">=</span> X.iloc[y<span class="op">==</span><span class="dv">1</span>, :]</span>
+<span id="cb45-35"><a href="id_03_model_evaluation.html#cb45-35" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.iloc[y<span class="op">==</span><span class="dv">0</span>, :]</span>
+<span id="cb45-36"><a href="id_03_model_evaluation.html#cb45-36" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.asarray([<span class="dv">0</span>] <span class="op">*</span> X.shape[<span class="dv">0</span>] <span class="op">+</span> [<span class="dv">1</span>] <span class="op">*</span> (<span class="bu">sum</span>(counts)))</span>
+<span id="cb45-37"><a href="id_03_model_evaluation.html#cb45-37" aria-hidden="true" tabindex="-1"></a>    appended_data <span class="op">=</span> [X]</span>
+<span id="cb45-38"><a href="id_03_model_evaluation.html#cb45-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(counts)):</span>
+<span id="cb45-39"><a href="id_03_model_evaluation.html#cb45-39" aria-hidden="true" tabindex="-1"></a>        appended_data.append(pd.concat([X_temp.iloc[[i]]] <span class="op">*</span> counts[i]))</span>
+<span id="cb45-40"><a href="id_03_model_evaluation.html#cb45-40" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> pd.concat(appended_data)</span>
+<span id="cb45-41"><a href="id_03_model_evaluation.html#cb45-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&#39;There are </span><span class="sc">%d</span><span class="st"> positives out of </span><span class="sc">%d</span><span class="st"> samples after feature space weighting.&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(y), <span class="bu">len</span>(y)))</span>
+<span id="cb45-42"><a href="id_03_model_evaluation.html#cb45-42" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> pd.DataFrame({<span class="st">&#39;protein_id&#39;</span>: X.index, <span class="st">&#39;antigen_label&#39;</span> : y})</span>
+<span id="cb45-43"><a href="id_03_model_evaluation.html#cb45-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tree_filtering <span class="kw">is</span> <span class="va">True</span>:</span>
+<span id="cb45-44"><a href="id_03_model_evaluation.html#cb45-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># get ref antigen indices</span></span>
+<span id="cb45-45"><a href="id_03_model_evaluation.html#cb45-45" aria-hidden="true" tabindex="-1"></a>        ref_index_dict <span class="op">=</span> {ref:<span class="bu">list</span>() <span class="cf">for</span> ref <span class="kw">in</span> <span class="bu">list</span>(ref_antigens.values())}</span>
+<span id="cb45-46"><a href="id_03_model_evaluation.html#cb45-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(res.shape[<span class="dv">0</span>]):</span>
+<span id="cb45-47"><a href="id_03_model_evaluation.html#cb45-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> res[<span class="st">&#39;protein_id&#39;</span>][i] <span class="kw">in</span> <span class="bu">list</span>(ref_antigens.values()):</span>
+<span id="cb45-48"><a href="id_03_model_evaluation.html#cb45-48" aria-hidden="true" tabindex="-1"></a>                ref_index_dict[res[<span class="st">&#39;protein_id&#39;</span>][i]].append(res.index[i])</span>
+<span id="cb45-49"><a href="id_03_model_evaluation.html#cb45-49" aria-hidden="true" tabindex="-1"></a>        ref_indices <span class="op">=</span> <span class="bu">sum</span>(ref_index_dict.values(), [])</span>
+<span id="cb45-50"><a href="id_03_model_evaluation.html#cb45-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># get OOB stats and predictions</span></span>
+<span id="cb45-51"><a href="id_03_model_evaluation.html#cb45-51" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> X.astype(<span class="st">&#39;float32&#39;</span>)</span>
+<span id="cb45-52"><a href="id_03_model_evaluation.html#cb45-52" aria-hidden="true" tabindex="-1"></a>        trees <span class="op">=</span> purf.estimators_</span>
+<span id="cb45-53"><a href="id_03_model_evaluation.html#cb45-53" aria-hidden="true" tabindex="-1"></a>        idx_list <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(trees))]</span>
+<span id="cb45-54"><a href="id_03_model_evaluation.html#cb45-54" aria-hidden="true" tabindex="-1"></a>        stats_res <span class="op">=</span> Parallel(n_jobs<span class="op">=</span>n_jobs)(</span>
+<span id="cb45-55"><a href="id_03_model_evaluation.html#cb45-55" aria-hidden="true" tabindex="-1"></a>                    delayed(_get_ref_antigen_stats)(idx, trees[idx], np.array(X), y, ref_indices) <span class="cf">for</span> idx <span class="kw">in</span> idx_list)</span>
+<span id="cb45-56"><a href="id_03_model_evaluation.html#cb45-56" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ref_oob data structure:</span></span>
+<span id="cb45-57"><a href="id_03_model_evaluation.html#cb45-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rows represent individual trees</span></span>
+<span id="cb45-58"><a href="id_03_model_evaluation.html#cb45-58" aria-hidden="true" tabindex="-1"></a>        <span class="co"># column represent reference antigens</span></span>
+<span id="cb45-59"><a href="id_03_model_evaluation.html#cb45-59" aria-hidden="true" tabindex="-1"></a>        <span class="co"># cells indicate whether the reference antigen is in the OOB samples of the tree</span></span>
+<span id="cb45-60"><a href="id_03_model_evaluation.html#cb45-60" aria-hidden="true" tabindex="-1"></a>        ref_oob <span class="op">=</span> np.array([ref_oob <span class="cf">for</span> ref_oob, ref_pred <span class="kw">in</span> stats_res])</span>
+<span id="cb45-61"><a href="id_03_model_evaluation.html#cb45-61" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ref_pred data structure:</span></span>
+<span id="cb45-62"><a href="id_03_model_evaluation.html#cb45-62" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rows represent individual trees</span></span>
+<span id="cb45-63"><a href="id_03_model_evaluation.html#cb45-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># column represent reference antigens</span></span>
+<span id="cb45-64"><a href="id_03_model_evaluation.html#cb45-64" aria-hidden="true" tabindex="-1"></a>        <span class="co"># cells indicate the prediction of the reference antigen by the tree</span></span>
+<span id="cb45-65"><a href="id_03_model_evaluation.html#cb45-65" aria-hidden="true" tabindex="-1"></a>        ref_pred <span class="op">=</span> np.array([ref_pred <span class="cf">for</span> ref_oob, ref_pred <span class="kw">in</span> stats_res])</span>
+<span id="cb45-66"><a href="id_03_model_evaluation.html#cb45-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># analyze duplicated reference antigens as a group</span></span>
+<span id="cb45-67"><a href="id_03_model_evaluation.html#cb45-67" aria-hidden="true" tabindex="-1"></a>        cumsum_num_ref <span class="op">=</span> np.cumsum(np.array([<span class="bu">len</span>(v) <span class="cf">for</span> k,v <span class="kw">in</span> ref_index_dict.items()]))</span>
+<span id="cb45-68"><a href="id_03_model_evaluation.html#cb45-68" aria-hidden="true" tabindex="-1"></a>        ref_oob_all <span class="op">=</span> np.array([ref_oob[:, <span class="dv">0</span>:cumsum_num_ref[i]].<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">\</span></span>
+<span id="cb45-69"><a href="id_03_model_evaluation.html#cb45-69" aria-hidden="true" tabindex="-1"></a>                                ref_oob[:, cumsum_num_ref[i <span class="op">-</span> <span class="dv">1</span>]:cumsum_num_ref[i]].<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb45-70"><a href="id_03_model_evaluation.html#cb45-70" aria-hidden="true" tabindex="-1"></a>                                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ref_antigens))]).T</span>
+<span id="cb45-71"><a href="id_03_model_evaluation.html#cb45-71" aria-hidden="true" tabindex="-1"></a>        ref_pred_all <span class="op">=</span> np.array([ref_pred[:, <span class="dv">0</span>:cumsum_num_ref[i]].<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">\</span></span>
+<span id="cb45-72"><a href="id_03_model_evaluation.html#cb45-72" aria-hidden="true" tabindex="-1"></a>                                 ref_pred[:, cumsum_num_ref[i <span class="op">-</span> <span class="dv">1</span>]:cumsum_num_ref[i]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">\</span></span>
+<span id="cb45-73"><a href="id_03_model_evaluation.html#cb45-73" aria-hidden="true" tabindex="-1"></a>                                 <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ref_antigens))]).T</span>
+<span id="cb45-74"><a href="id_03_model_evaluation.html#cb45-74" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate number of reference antigens as OOB samples for each tree</span></span>
+<span id="cb45-75"><a href="id_03_model_evaluation.html#cb45-75" aria-hidden="true" tabindex="-1"></a>        oob_total <span class="op">=</span> ref_oob_all.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb45-76"><a href="id_03_model_evaluation.html#cb45-76" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assign score of 1 to trees that correctly predict all OOB reference antigens; otherwise, assign 0 score </span></span>
+<span id="cb45-77"><a href="id_03_model_evaluation.html#cb45-77" aria-hidden="true" tabindex="-1"></a>        weights <span class="op">=</span> np.zeros(<span class="bu">len</span>(trees))</span>
+<span id="cb45-78"><a href="id_03_model_evaluation.html#cb45-78" aria-hidden="true" tabindex="-1"></a>        <span class="co"># iterate through the trees and calculate the stats</span></span>
+<span id="cb45-79"><a href="id_03_model_evaluation.html#cb45-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(trees)):</span>
+<span id="cb45-80"><a href="id_03_model_evaluation.html#cb45-80" aria-hidden="true" tabindex="-1"></a>            oob_list <span class="op">=</span> <span class="bu">list</span>(ref_oob_all[i,:])</span>
+<span id="cb45-81"><a href="id_03_model_evaluation.html#cb45-81" aria-hidden="true" tabindex="-1"></a>            pred_list <span class="op">=</span> <span class="bu">list</span>(ref_pred_all[i,:])</span>
+<span id="cb45-82"><a href="id_03_model_evaluation.html#cb45-82" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> oob_total[i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb45-83"><a href="id_03_model_evaluation.html#cb45-83" aria-hidden="true" tabindex="-1"></a>                weights[i] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb45-84"><a href="id_03_model_evaluation.html#cb45-84" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb45-85"><a href="id_03_model_evaluation.html#cb45-85" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">sum</span>(np.array(pred_list)[oob_list] <span class="op">!=</span> <span class="dv">0</span>) <span class="op">==</span> oob_total[i]:</span>
+<span id="cb45-86"><a href="id_03_model_evaluation.html#cb45-86" aria-hidden="true" tabindex="-1"></a>                    weights[i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb45-87"><a href="id_03_model_evaluation.html#cb45-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tree_filtering <span class="kw">is</span> <span class="va">False</span>:</span>
+<span id="cb45-88"><a href="id_03_model_evaluation.html#cb45-88" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Training PURF</span></span>
+<span id="cb45-89"><a href="id_03_model_evaluation.html#cb45-89" aria-hidden="true" tabindex="-1"></a>        purf <span class="op">=</span> PURandomForestClassifier(</span>
+<span id="cb45-90"><a href="id_03_model_evaluation.html#cb45-90" aria-hidden="true" tabindex="-1"></a>            n_estimators <span class="op">=</span> <span class="dv">100000</span>,</span>
+<span id="cb45-91"><a href="id_03_model_evaluation.html#cb45-91" aria-hidden="true" tabindex="-1"></a>            oob_score <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb45-92"><a href="id_03_model_evaluation.html#cb45-92" aria-hidden="true" tabindex="-1"></a>            n_jobs <span class="op">=</span> <span class="dv">64</span>,</span>
+<span id="cb45-93"><a href="id_03_model_evaluation.html#cb45-93" aria-hidden="true" tabindex="-1"></a>            random_state <span class="op">=</span> <span class="dv">42</span>,</span>
+<span id="cb45-94"><a href="id_03_model_evaluation.html#cb45-94" aria-hidden="true" tabindex="-1"></a>            pos_level <span class="op">=</span> pos_level</span>
+<span id="cb45-95"><a href="id_03_model_evaluation.html#cb45-95" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb45-96"><a href="id_03_model_evaluation.html#cb45-96" aria-hidden="true" tabindex="-1"></a>        purf.fit(X, y)</span>
+<span id="cb45-97"><a href="id_03_model_evaluation.html#cb45-97" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb45-98"><a href="id_03_model_evaluation.html#cb45-98" aria-hidden="true" tabindex="-1"></a>        purf._set_oob_score_with_weights(np.array(X), y.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>), weights<span class="op">=</span>weights)</span>
+<span id="cb45-99"><a href="id_03_model_evaluation.html#cb45-99" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Storing results</span></span>
+<span id="cb45-100"><a href="id_03_model_evaluation.html#cb45-100" aria-hidden="true" tabindex="-1"></a>    res[<span class="st">&#39;OOB score&#39;</span>] <span class="op">=</span> purf.oob_decision_function_[:,<span class="dv">1</span>]</span>
+<span id="cb45-101"><a href="id_03_model_evaluation.html#cb45-101" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> features.merge(res.groupby(<span class="st">&#39;protein_id&#39;</span>).mean(), left_index<span class="op">=</span><span class="va">True</span>, right_on<span class="op">=</span><span class="st">&#39;protein_id&#39;</span>)</span>
+<span id="cb45-102"><a href="id_03_model_evaluation.html#cb45-102" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> res[[<span class="st">&#39;antigen_label&#39;</span>, <span class="st">&#39;OOB score&#39;</span>]]</span>
+<span id="cb45-103"><a href="id_03_model_evaluation.html#cb45-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tree_filtering <span class="kw">is</span> <span class="va">False</span>:</span>
+<span id="cb45-104"><a href="id_03_model_evaluation.html#cb45-104" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (purf, res)</span>
+<span id="cb45-105"><a href="id_03_model_evaluation.html#cb45-105" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb45-106"><a href="id_03_model_evaluation.html#cb45-106" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ({<span class="st">&#39;model&#39;</span>: purf, <span class="st">&#39;weights&#39;</span>: weights}, res)</span></code></pre></div>
+<div id="pv-data-set-2" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Pv data set<a href="id_03_model_evaluation.html#pv-data-set-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb46-1"><a href="id_03_model_evaluation.html#cb46-1" aria-hidden="true" tabindex="-1"></a>ref_antigens <span class="op">=</span> {<span class="st">&#39;CSP&#39;</span>: <span class="st">&#39;PVP01_0835600.1-p1&#39;</span>, <span class="st">&#39;DBP&#39;</span>: <span class="st">&#39;PVP01_0623800.1-p1&#39;</span>, <span class="st">&#39;MSP1&#39;</span>: <span class="st">&#39;PVP01_0728900.1-p1&#39;</span>}</span>
+<span id="cb46-2"><a href="id_03_model_evaluation.html#cb46-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">&#39;./other_data/pv_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb46-3"><a href="id_03_model_evaluation.html#cb46-3" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> data.iloc[:, <span class="dv">1</span>:]</span>
+<span id="cb46-4"><a href="id_03_model_evaluation.html#cb46-4" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> np.array(data.antigen_label)</span>
+<span id="cb46-5"><a href="id_03_model_evaluation.html#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="id_03_model_evaluation.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (idx, (antigen, out)) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(features.index, outcome)):</span>
+<span id="cb46-7"><a href="id_03_model_evaluation.html#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> out <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb46-8"><a href="id_03_model_evaluation.html#cb46-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> antigen <span class="kw">in</span> ref_antigens.values():</span>
+<span id="cb46-9"><a href="id_03_model_evaluation.html#cb46-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb46-10"><a href="id_03_model_evaluation.html#cb46-10" aria-hidden="true" tabindex="-1"></a>        outcome_ <span class="op">=</span> outcome.copy()</span>
+<span id="cb46-11"><a href="id_03_model_evaluation.html#cb46-11" aria-hidden="true" tabindex="-1"></a>        outcome_[idx] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-12"><a href="id_03_model_evaluation.html#cb46-12" aria-hidden="true" tabindex="-1"></a>        (purf, res) <span class="op">=</span> train_purf(features, outcome_, pos_level<span class="op">=</span><span class="fl">0.5</span>, tree_filtering<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb46-13"><a href="id_03_model_evaluation.html#cb46-13" aria-hidden="true" tabindex="-1"></a>        (purf_filtered, res_filtered) <span class="op">=</span> train_purf(features, outcome_, pos_level<span class="op">=</span><span class="fl">0.5</span>, purf<span class="op">=</span>purf, tree_filtering<span class="op">=</span><span class="va">True</span>, ref_antigens<span class="op">=</span>ref_antigens)</span>
+<span id="cb46-14"><a href="id_03_model_evaluation.html#cb46-14" aria-hidden="true" tabindex="-1"></a>        res_filtered.to_csv(<span class="st">&#39;~/Downloads/pv_jackknife/&#39;</span> <span class="op">+</span> antigen <span class="op">+</span> <span class="st">&#39;_res.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb47-1"><a href="id_03_model_evaluation.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> <span class="op">=</span> <span class="st">&#39;~/Downloads/pv_jackknife/&#39;</span></span>
+<span id="cb47-2"><a href="id_03_model_evaluation.html#cb47-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(<span class="bu">dir</span>)</span>
+<span id="cb47-3"><a href="id_03_model_evaluation.html#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="id_03_model_evaluation.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb47-5"><a href="id_03_model_evaluation.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>):</span>
+<span id="cb47-6"><a href="id_03_model_evaluation.html#cb47-6" aria-hidden="true" tabindex="-1"></a>        tmp <span class="op">=</span> pd.read_csv(<span class="bu">dir</span> <span class="op">+</span> <span class="bu">file</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="st">&#39;antigen_label&#39;</span>]</span>
+<span id="cb47-7"><a href="id_03_model_evaluation.html#cb47-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb47-8"><a href="id_03_model_evaluation.html#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="id_03_model_evaluation.html#cb47-9" aria-hidden="true" tabindex="-1"></a>data_frames <span class="op">=</span> [pd.read_csv(<span class="bu">dir</span> <span class="op">+</span> <span class="bu">file</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="st">&#39;OOB score&#39;</span>] <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>)]</span>
+<span id="cb47-10"><a href="id_03_model_evaluation.html#cb47-10" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.concat([tmp] <span class="op">+</span> data_frames, join<span class="op">=</span><span class="st">&#39;outer&#39;</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb47-11"><a href="id_03_model_evaluation.html#cb47-11" aria-hidden="true" tabindex="-1"></a>colnames <span class="op">=</span> [<span class="st">&#39;antigen_label&#39;</span>] <span class="op">+</span> [re.match(<span class="st">&#39;PVP01_[0-9]+\.[0-9]-p1&#39;</span>, <span class="bu">file</span>)[<span class="dv">0</span>] <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>)]</span>
+<span id="cb47-12"><a href="id_03_model_evaluation.html#cb47-12" aria-hidden="true" tabindex="-1"></a>merged_df.columns <span class="op">=</span> colnames</span>
+<span id="cb47-13"><a href="id_03_model_evaluation.html#cb47-13" aria-hidden="true" tabindex="-1"></a>merged_df.to_csv(<span class="st">&#39;./other_data/pv_adversarial_controls.csv&#39;</span>)</span></code></pre></div>
+</div>
+<div id="pv-pf-combined-data-set-2" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Pv + Pf combined data set<a href="id_03_model_evaluation.html#pv-pf-combined-data-set-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb48-1"><a href="id_03_model_evaluation.html#cb48-1" aria-hidden="true" tabindex="-1"></a>ref_antigens <span class="op">=</span> {<span class="st">&#39;CSP (Pf)&#39;</span>: <span class="st">&#39;PF3D7_0304600.1-p1&#39;</span>, <span class="st">&#39;RH5 (Pf)&#39;</span>: <span class="st">&#39;PF3D7_0424100.1-p1&#39;</span>, <span class="st">&#39;MSP5 (Pf)&#39;</span>: <span class="st">&#39;PF3D7_0206900.1-p1&#39;</span>,</span>
+<span id="cb48-2"><a href="id_03_model_evaluation.html#cb48-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">&#39;P230 (Pf)&#39;</span>: <span class="st">&#39;PF3D7_0209000.1-p1&#39;</span>,</span>
+<span id="cb48-3"><a href="id_03_model_evaluation.html#cb48-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">&#39;CSP (Pv)&#39;</span>: <span class="st">&#39;PVP01_0835600.1-p1&#39;</span>, <span class="st">&#39;DBP (Pv)&#39;</span>: <span class="st">&#39;PVP01_0623800.1-p1&#39;</span>, <span class="st">&#39;MSP1 (Pv)&#39;</span>: <span class="st">&#39;PVP01_0728900.1-p1&#39;</span>}</span>
+<span id="cb48-4"><a href="id_03_model_evaluation.html#cb48-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">&#39;./data/supplementary_data_4_pfpv_ml_input.csv&#39;</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb48-5"><a href="id_03_model_evaluation.html#cb48-5" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> data.iloc[:, <span class="dv">1</span>:]</span>
+<span id="cb48-6"><a href="id_03_model_evaluation.html#cb48-6" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> np.array(data.antigen_label)</span>
+<span id="cb48-7"><a href="id_03_model_evaluation.html#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="id_03_model_evaluation.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (idx, (antigen, out)) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(features.index, outcome)):</span>
+<span id="cb48-9"><a href="id_03_model_evaluation.html#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> out <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb48-10"><a href="id_03_model_evaluation.html#cb48-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> antigen <span class="kw">in</span> ref_antigens.values():</span>
+<span id="cb48-11"><a href="id_03_model_evaluation.html#cb48-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb48-12"><a href="id_03_model_evaluation.html#cb48-12" aria-hidden="true" tabindex="-1"></a>        outcome_ <span class="op">=</span> outcome.copy()</span>
+<span id="cb48-13"><a href="id_03_model_evaluation.html#cb48-13" aria-hidden="true" tabindex="-1"></a>        outcome_[idx] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb48-14"><a href="id_03_model_evaluation.html#cb48-14" aria-hidden="true" tabindex="-1"></a>        (purf, res) <span class="op">=</span> train_purf(features, outcome_, pos_level<span class="op">=</span><span class="fl">0.5</span>, tree_filtering<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb48-15"><a href="id_03_model_evaluation.html#cb48-15" aria-hidden="true" tabindex="-1"></a>        (purf_filtered, res_filtered) <span class="op">=</span> train_purf(features, outcome_, pos_level<span class="op">=</span><span class="fl">0.5</span>, purf<span class="op">=</span>purf, tree_filtering<span class="op">=</span><span class="va">True</span>, ref_antigens<span class="op">=</span>ref_antigens)</span>
+<span id="cb48-16"><a href="id_03_model_evaluation.html#cb48-16" aria-hidden="true" tabindex="-1"></a>        res_filtered.to_csv(<span class="st">&#39;~/Downloads/pfpv_jackknife/&#39;</span> <span class="op">+</span> antigen <span class="op">+</span> <span class="st">&#39;_res.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb49-1"><a href="id_03_model_evaluation.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> <span class="op">=</span> <span class="st">&#39;~/Downloads/pfpv_jackknife/&#39;</span></span>
+<span id="cb49-2"><a href="id_03_model_evaluation.html#cb49-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(<span class="bu">dir</span>)</span>
+<span id="cb49-3"><a href="id_03_model_evaluation.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="id_03_model_evaluation.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb49-5"><a href="id_03_model_evaluation.html#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>):</span>
+<span id="cb49-6"><a href="id_03_model_evaluation.html#cb49-6" aria-hidden="true" tabindex="-1"></a>        tmp <span class="op">=</span> pd.read_csv(<span class="bu">dir</span> <span class="op">+</span> <span class="bu">file</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="st">&#39;antigen_label&#39;</span>]</span>
+<span id="cb49-7"><a href="id_03_model_evaluation.html#cb49-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb49-8"><a href="id_03_model_evaluation.html#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="id_03_model_evaluation.html#cb49-9" aria-hidden="true" tabindex="-1"></a>data_frames <span class="op">=</span> [pd.read_csv(<span class="bu">dir</span> <span class="op">+</span> <span class="bu">file</span>, index_col<span class="op">=</span><span class="dv">0</span>)[<span class="st">&#39;OOB score&#39;</span>] <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>)]</span>
+<span id="cb49-10"><a href="id_03_model_evaluation.html#cb49-10" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.concat([tmp] <span class="op">+</span> data_frames, join<span class="op">=</span><span class="st">&#39;outer&#39;</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb49-11"><a href="id_03_model_evaluation.html#cb49-11" aria-hidden="true" tabindex="-1"></a>colnames <span class="op">=</span> [<span class="st">&#39;antigen_label&#39;</span>] <span class="op">+</span> [re.match(<span class="st">&#39;PF3D7_[0-9]+\.[0-9]-p1&#39;</span>, <span class="bu">file</span>)[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">file</span>.startswith(<span class="st">&#39;PF3D7&#39;</span>) <span class="cf">else</span> re.match(<span class="st">&#39;PVP01_[0-9]+\.[0-9]-p1&#39;</span>, <span class="bu">file</span>)[<span class="dv">0</span>] <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">&#39;csv&#39;</span>)]</span>
+<span id="cb49-12"><a href="id_03_model_evaluation.html#cb49-12" aria-hidden="true" tabindex="-1"></a>merged_df.columns <span class="op">=</span> colnames</span>
+<span id="cb49-13"><a href="id_03_model_evaluation.html#cb49-13" aria-hidden="true" tabindex="-1"></a>merged_df.to_csv(<span class="st">&#39;./other_data/pfpv_adversarial_controls.csv&#39;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="plotting-1" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Plotting<a href="id_03_model_evaluation.html#plotting-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>In R: </strong></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb50-1"><a href="id_03_model_evaluation.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb50-2"><a href="id_03_model_evaluation.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
+<span id="cb50-3"><a href="id_03_model_evaluation.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gghalves)</span>
+<span id="cb50-4"><a href="id_03_model_evaluation.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb50-5"><a href="id_03_model_evaluation.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb50-6"><a href="id_03_model_evaluation.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb50-7"><a href="id_03_model_evaluation.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb51-1"><a href="id_03_model_evaluation.html#cb51-1" aria-hidden="true" tabindex="-1"></a>pv_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/supplementary_data_3_pv_purf_oob_predictions.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb51-2"><a href="id_03_model_evaluation.html#cb51-2" aria-hidden="true" tabindex="-1"></a>pf_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_single_pv_single_scores.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb51-3"><a href="id_03_model_evaluation.html#cb51-3" aria-hidden="true" tabindex="-1"></a>pfpv_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/supplementary_data_5_pfpv_purf_oob_predictions.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb51-4"><a href="id_03_model_evaluation.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="id_03_model_evaluation.html#cb51-5" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pv_adversarial_controls.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb51-6"><a href="id_03_model_evaluation.html#cb51-6" aria-hidden="true" tabindex="-1"></a>pf_ad_ctrl <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf_adversarial_controls.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb51-7"><a href="id_03_model_evaluation.html#cb51-7" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pfpv_adversarial_controls.csv&quot;</span>, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div id="mean-differences-in-scores" class="section level4 hasAnchor" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Mean differences in scores<a href="id_03_model_evaluation.html#mean-differences-in-scores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb52-1"><a href="id_03_model_evaluation.html#cb52-1" aria-hidden="true" tabindex="-1"></a>pv_products <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pvp01_gene_products_v62.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb52-2"><a href="id_03_model_evaluation.html#cb52-2" aria-hidden="true" tabindex="-1"></a>pf_products <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pf3d7_gene_products_v62.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb52-3"><a href="id_03_model_evaluation.html#cb52-3" aria-hidden="true" tabindex="-1"></a>gene_products <span class="ot">&lt;-</span> <span class="fu">rbind</span>(pf_products, pv_products)</span>
+<span id="cb52-4"><a href="id_03_model_evaluation.html#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="id_03_model_evaluation.html#cb52-5" aria-hidden="true" tabindex="-1"></a>calculate_known_antigen_scores <span class="ot">&lt;-</span> <span class="cf">function</span>(validation_data, baseline_scores) {</span>
+<span id="cb52-6"><a href="id_03_model_evaluation.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  scores <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb52-7"><a href="id_03_model_evaluation.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(validation_data)) {</span>
+<span id="cb52-8"><a href="id_03_model_evaluation.html#cb52-8" aria-hidden="true" tabindex="-1"></a>    known_antigen <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">colnames</span>(validation_data))[i]</span>
+<span id="cb52-9"><a href="id_03_model_evaluation.html#cb52-9" aria-hidden="true" tabindex="-1"></a>    other_antigens <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">colnames</span>(validation_data))[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, i)]</span>
+<span id="cb52-10"><a href="id_03_model_evaluation.html#cb52-10" aria-hidden="true" tabindex="-1"></a>    scores <span class="ot">&lt;-</span> <span class="fu">c</span>(scores, <span class="fu">mean</span>(validation_data[other_antigens, known_antigen] <span class="sc">-</span> baseline_scores[other_antigens, ]))</span>
+<span id="cb52-11"><a href="id_03_model_evaluation.html#cb52-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb52-12"><a href="id_03_model_evaluation.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(scores) <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">colnames</span>(validation_data))[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(validation_data)]</span>
+<span id="cb52-13"><a href="id_03_model_evaluation.html#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(scores)</span>
+<span id="cb52-14"><a href="id_03_model_evaluation.html#cb52-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-15"><a href="id_03_model_evaluation.html#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-16"><a href="id_03_model_evaluation.html#cb52-16" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_scores <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_scores</span>(pv_ad_ctrl, pv_data[<span class="st">&quot;OOB score filtered&quot;</span>])</span>
+<span id="cb52-17"><a href="id_03_model_evaluation.html#cb52-17" aria-hidden="true" tabindex="-1"></a>pf_ad_ctrl_scores <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_scores</span>(pf_ad_ctrl, pf_data[<span class="fu">rownames</span>(pf_ad_ctrl), <span class="st">&quot;OOB score filtered&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>])</span>
+<span id="cb52-18"><a href="id_03_model_evaluation.html#cb52-18" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_scores <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_scores</span>(pfpv_ad_ctrl, pfpv_data[<span class="st">&quot;OOB score filtered&quot;</span>])</span>
+<span id="cb52-19"><a href="id_03_model_evaluation.html#cb52-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-20"><a href="id_03_model_evaluation.html#cb52-20" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb52-21"><a href="id_03_model_evaluation.html#cb52-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;score&quot;</span> <span class="ot">=</span> pv_ad_ctrl_scores,</span>
+<span id="cb52-22"><a href="id_03_model_evaluation.html#cb52-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;gene_product&quot;</span> <span class="ot">=</span> gene_products[<span class="fu">names</span>(pv_ad_ctrl_scores), <span class="st">&quot;gene_product&quot;</span>],</span>
+<span id="cb52-23"><a href="id_03_model_evaluation.html#cb52-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">names</span>(pv_ad_ctrl_scores)</span>
+<span id="cb52-24"><a href="id_03_model_evaluation.html#cb52-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-25"><a href="id_03_model_evaluation.html#cb52-25" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>source <span class="ot">&lt;-</span> <span class="st">&quot;Intersect&quot;</span></span>
+<span id="cb52-26"><a href="id_03_model_evaluation.html#cb52-26" aria-hidden="true" tabindex="-1"></a>literature <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb52-27"><a href="id_03_model_evaluation.html#cb52-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0102300.1-p1&quot;</span>, <span class="st">&quot;PVP01_0118900.1-p1&quot;</span>, <span class="st">&quot;PVP01_0202200.1-p1&quot;</span>, <span class="st">&quot;PVP01_0205500.1-p1&quot;</span>,</span>
+<span id="cb52-28"><a href="id_03_model_evaluation.html#cb52-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0210500.1-p1&quot;</span>, <span class="st">&quot;PVP01_0304300.1-p1&quot;</span>, <span class="st">&quot;PVP01_0317900.1-p1&quot;</span>, <span class="st">&quot;PVP01_0418300.1-p1&quot;</span>,</span>
+<span id="cb52-29"><a href="id_03_model_evaluation.html#cb52-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0418400.1-p1&quot;</span>, <span class="st">&quot;PVP01_0529100.1-p1&quot;</span>, <span class="st">&quot;PVP01_0532400.1-p1&quot;</span>, <span class="st">&quot;PVP01_0616000.1-p1&quot;</span>,</span>
+<span id="cb52-30"><a href="id_03_model_evaluation.html#cb52-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0616100.1-p1&quot;</span>, <span class="st">&quot;PVP01_0701200.1-p1&quot;</span>, <span class="st">&quot;PVP01_0707700.1-p1&quot;</span>, <span class="st">&quot;PVP01_1026000.1-p1&quot;</span>,</span>
+<span id="cb52-31"><a href="id_03_model_evaluation.html#cb52-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_1030900.1-p1&quot;</span>, <span class="st">&quot;PVP01_1129100.1-p1&quot;</span></span>
+<span id="cb52-32"><a href="id_03_model_evaluation.html#cb52-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-33"><a href="id_03_model_evaluation.html#cb52-33" aria-hidden="true" tabindex="-1"></a>IEDB <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb52-34"><a href="id_03_model_evaluation.html#cb52-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0106200.1-p1&quot;</span>, <span class="st">&quot;PVP01_0106300.1-p1&quot;</span>, <span class="st">&quot;PVP01_0215600.1-p1&quot;</span>, <span class="st">&quot;PVP01_0307400.1-p1&quot;</span>,</span>
+<span id="cb52-35"><a href="id_03_model_evaluation.html#cb52-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0522300.1-p1&quot;</span>, <span class="st">&quot;PVP01_0813700.1-p1&quot;</span>, <span class="st">&quot;PVP01_0829000.1-p1&quot;</span>, <span class="st">&quot;PVP01_0835600.1-p1&quot;</span>,</span>
+<span id="cb52-36"><a href="id_03_model_evaluation.html#cb52-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_0923000.1-p1&quot;</span>, <span class="st">&quot;PVP01_0932400.1-p1&quot;</span>, <span class="st">&quot;PVP01_1240600.1-p1&quot;</span>, <span class="st">&quot;PVP01_1306000.1-p1&quot;</span>,</span>
+<span id="cb52-37"><a href="id_03_model_evaluation.html#cb52-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PVP01_1412900.1-p1&quot;</span>, <span class="st">&quot;PVP01_1453900.1-p1&quot;</span></span>
+<span id="cb52-38"><a href="id_03_model_evaluation.html#cb52-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-39"><a href="id_03_model_evaluation.html#cb52-39" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>source[<span class="fu">rownames</span>(pv_ad_ctrl_res) <span class="sc">%in%</span> literature] <span class="ot">&lt;-</span> <span class="st">&quot;Literature&quot;</span></span>
+<span id="cb52-40"><a href="id_03_model_evaluation.html#cb52-40" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>source[<span class="fu">rownames</span>(pv_ad_ctrl_res) <span class="sc">%in%</span> IEDB] <span class="ot">&lt;-</span> <span class="st">&quot;IEDB&quot;</span></span>
+<span id="cb52-41"><a href="id_03_model_evaluation.html#cb52-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-42"><a href="id_03_model_evaluation.html#cb52-42" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb52-43"><a href="id_03_model_evaluation.html#cb52-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;score&quot;</span> <span class="ot">=</span> pfpv_ad_ctrl_scores,</span>
+<span id="cb52-44"><a href="id_03_model_evaluation.html#cb52-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;gene_product&quot;</span> <span class="ot">=</span> gene_products[<span class="fu">names</span>(pfpv_ad_ctrl_scores), <span class="st">&quot;gene_product&quot;</span>],</span>
+<span id="cb52-45"><a href="id_03_model_evaluation.html#cb52-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">names</span>(pfpv_ad_ctrl_scores)</span>
+<span id="cb52-46"><a href="id_03_model_evaluation.html#cb52-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-47"><a href="id_03_model_evaluation.html#cb52-47" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>source <span class="ot">&lt;-</span> <span class="st">&quot;Intersect&quot;</span></span>
+<span id="cb52-48"><a href="id_03_model_evaluation.html#cb52-48" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>source[<span class="fu">rownames</span>(pfpv_ad_ctrl_res) <span class="sc">%in%</span> literature] <span class="ot">&lt;-</span> <span class="st">&quot;Literature&quot;</span></span>
+<span id="cb52-49"><a href="id_03_model_evaluation.html#cb52-49" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>source[<span class="fu">rownames</span>(pfpv_ad_ctrl_res) <span class="sc">%in%</span> IEDB] <span class="ot">&lt;-</span> <span class="st">&quot;IEDB&quot;</span></span>
+<span id="cb52-50"><a href="id_03_model_evaluation.html#cb52-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-51"><a href="id_03_model_evaluation.html#cb52-51" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(pv_ad_ctrl_res, <span class="at">file =</span> <span class="st">&quot;./other_data/pv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-52"><a href="id_03_model_evaluation.html#cb52-52" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(pfpv_ad_ctrl_res, <span class="at">file =</span> <span class="st">&quot;./other_data/pfpv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb53-1"><a href="id_03_model_evaluation.html#cb53-1" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb53-2"><a href="id_03_model_evaluation.html#cb53-2" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pfpv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb53-3"><a href="id_03_model_evaluation.html#cb53-3" aria-hidden="true" tabindex="-1"></a>data_ <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb53-4"><a href="id_03_model_evaluation.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(</span>
+<span id="cb53-5"><a href="id_03_model_evaluation.html#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(pv_ad_ctrl_scores)), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(pf_ad_ctrl_scores)),</span>
+<span id="cb53-6"><a href="id_03_model_evaluation.html#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="dv">2</span>, <span class="fu">length</span>(pfpv_ad_ctrl_scores))</span>
+<span id="cb53-7"><a href="id_03_model_evaluation.html#cb53-7" aria-hidden="true" tabindex="-1"></a>  )),</span>
+<span id="cb53-8"><a href="id_03_model_evaluation.html#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(pv_ad_ctrl_scores, pf_ad_ctrl_scores, pfpv_ad_ctrl_scores)</span>
+<span id="cb53-9"><a href="id_03_model_evaluation.html#cb53-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-10"><a href="id_03_model_evaluation.html#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="id_03_model_evaluation.html#cb53-11" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> score)) <span class="sc">+</span></span>
+<span id="cb53-12"><a href="id_03_model_evaluation.html#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;grey80&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-13"><a href="id_03_model_evaluation.html#cb53-13" aria-hidden="true" tabindex="-1"></a>  ggdist<span class="sc">::</span><span class="fu">stat_halfeye</span>(<span class="fu">aes</span>(<span class="at">color =</span> group, <span class="at">fill =</span> group), <span class="at">adjust =</span> <span class="fl">0.5</span>, <span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">.width =</span> <span class="dv">0</span>, <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">point_colour =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb53-14"><a href="id_03_model_evaluation.html#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color =</span> group), <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">outlier.color =</span> <span class="cn">NA</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb53-15"><a href="id_03_model_evaluation.html#cb53-15" aria-hidden="true" tabindex="-1"></a>  gghalves<span class="sc">::</span><span class="fu">geom_half_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> group), <span class="at">side =</span> <span class="st">&quot;l&quot;</span>, <span class="at">range_scale =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">stroke =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb53-16"><a href="id_03_model_evaluation.html#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb53-17"><a href="id_03_model_evaluation.html#cb53-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#03a1fc&quot;</span>, <span class="st">&quot;#984EA3&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb53-18"><a href="id_03_model_evaluation.html#cb53-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#03a1fc&quot;</span>, <span class="st">&quot;#984EA3&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb53-19"><a href="id_03_model_evaluation.html#cb53-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
+<span id="cb53-20"><a href="id_03_model_evaluation.html#cb53-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb53-21"><a href="id_03_model_evaluation.html#cb53-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(</span>
+<span id="cb53-22"><a href="id_03_model_evaluation.html#cb53-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&quot;P. vivax&quot;</span>), <span class="st">&quot; model&quot;</span>)),</span>
+<span id="cb53-23"><a href="id_03_model_evaluation.html#cb53-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&quot;P. falciparum&quot;</span>), <span class="st">&quot; model&quot;</span>)),</span>
+<span id="cb53-24"><a href="id_03_model_evaluation.html#cb53-24" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Combined model&quot;</span></span>
+<span id="cb53-25"><a href="id_03_model_evaluation.html#cb53-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb53-26"><a href="id_03_model_evaluation.html#cb53-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> rev</span>
+<span id="cb53-27"><a href="id_03_model_evaluation.html#cb53-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-28"><a href="id_03_model_evaluation.html#cb53-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb53-29"><a href="id_03_model_evaluation.html#cb53-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb53-30"><a href="id_03_model_evaluation.html#cb53-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-31"><a href="id_03_model_evaluation.html#cb53-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-32"><a href="id_03_model_evaluation.html#cb53-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb53-33"><a href="id_03_model_evaluation.html#cb53-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-34"><a href="id_03_model_evaluation.html#cb53-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb53-35"><a href="id_03_model_evaluation.html#cb53-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb53-36"><a href="id_03_model_evaluation.html#cb53-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> ggplot2<span class="sc">::</span><span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb53-37"><a href="id_03_model_evaluation.html#cb53-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-38"><a href="id_03_model_evaluation.html#cb53-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb53-39"><a href="id_03_model_evaluation.html#cb53-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
+<span id="cb53-40"><a href="id_03_model_evaluation.html#cb53-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-41"><a href="id_03_model_evaluation.html#cb53-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Mean difference in scores (proportion of votes)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb54-1"><a href="id_03_model_evaluation.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(</span>
+<span id="cb54-2"><a href="id_03_model_evaluation.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;./figures/Supplementary Fig 5.png&quot;</span>,</span>
+<span id="cb54-3"><a href="id_03_model_evaluation.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">5000</span>, <span class="at">height =</span> <span class="dv">2000</span>, <span class="at">res =</span> <span class="dv">600</span></span>
+<span id="cb54-4"><a href="id_03_model_evaluation.html#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-5"><a href="id_03_model_evaluation.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
+<span id="cb54-6"><a href="id_03_model_evaluation.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb54-7"><a href="id_03_model_evaluation.html#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="id_03_model_evaluation.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;../supplementary_figures/Supplementary Fig 5.pdf&quot;</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb54-9"><a href="id_03_model_evaluation.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
+<span id="cb54-10"><a href="id_03_model_evaluation.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><img src="figures/Supplementary%20Fig%205.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="investigation-of-known-antigen-groups" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Investigation of known antigen groups<a href="id_03_model_evaluation.html#investigation-of-known-antigen-groups" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb55-1"><a href="id_03_model_evaluation.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(umap)</span>
+<span id="cb55-2"><a href="id_03_model_evaluation.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb55-3"><a href="id_03_model_evaluation.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb55-4"><a href="id_03_model_evaluation.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb56-1"><a href="id_03_model_evaluation.html#cb56-1" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb56-2"><a href="id_03_model_evaluation.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pv_ad_ctrl_res = pv_ad_ctrl_res[pv_ad_ctrl_res$source != &#39;Intersect&#39;, ]</span></span>
+<span id="cb56-3"><a href="id_03_model_evaluation.html#cb56-3" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>score_group <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb56-4"><a href="id_03_model_evaluation.html#cb56-4" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>score_group[pv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&lt;</span> <span class="fl">0.01</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 1&quot;</span></span>
+<span id="cb56-5"><a href="id_03_model_evaluation.html#cb56-5" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_res<span class="sc">$</span>score_group[pv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&gt;=</span> <span class="fl">0.01</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 2&quot;</span></span>
+<span id="cb56-6"><a href="id_03_model_evaluation.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pv_ad_ctrl_res<span class="sc">$</span>score_group, pv_ad_ctrl_res<span class="sc">$</span>source)</span></code></pre></div>
+<pre><code>##          
+##           IEDB Intersect Literature
+##   Group 1   11         2          3
+##   Group 2    2         2         15</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb58-1"><a href="id_03_model_evaluation.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(pv_ad_ctrl_res<span class="sc">$</span>score_group, pv_ad_ctrl_res<span class="sc">$</span>source)</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pv_ad_ctrl_res$score_group and pv_ad_ctrl_res$source
+## p-value = 0.0002597
+## alternative hypothesis: two.sided</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb60-1"><a href="id_03_model_evaluation.html#cb60-1" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pfpv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb60-2"><a href="id_03_model_evaluation.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pfpv_ad_ctrl_res = pfpv_ad_ctrl_res[pfpv_ad_ctrl_res$source != &#39;Intersect&#39;, ]</span></span>
+<span id="cb60-3"><a href="id_03_model_evaluation.html#cb60-3" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb60-4"><a href="id_03_model_evaluation.html#cb60-4" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group[pfpv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.09</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 1&quot;</span></span>
+<span id="cb60-5"><a href="id_03_model_evaluation.html#cb60-5" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group[pfpv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&gt;=</span> <span class="sc">-</span><span class="fl">0.09</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 2&quot;</span></span>
+<span id="cb60-6"><a href="id_03_model_evaluation.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pfpv_ad_ctrl_res<span class="sc">$</span>score_group, pfpv_ad_ctrl_res<span class="sc">$</span>source)</span></code></pre></div>
+<pre><code>##          
+##           IEDB Intersect Literature
+##   Group 1   12        27          2
+##   Group 2    1        25         16</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb62-1"><a href="id_03_model_evaluation.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(pfpv_ad_ctrl_res<span class="sc">$</span>score_group, pfpv_ad_ctrl_res<span class="sc">$</span>source)</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pfpv_ad_ctrl_res$score_group and pfpv_ad_ctrl_res$source
+## p-value = 1.176e-05
+## alternative hypothesis: two.sided</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb64-1"><a href="id_03_model_evaluation.html#cb64-1" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./other_data/pfpv_ad_ctrl_res.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb64-2"><a href="id_03_model_evaluation.html#cb64-2" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb64-3"><a href="id_03_model_evaluation.html#cb64-3" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group[pfpv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.09</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 1&quot;</span></span>
+<span id="cb64-4"><a href="id_03_model_evaluation.html#cb64-4" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>score_group[pfpv_ad_ctrl_res<span class="sc">$</span>score <span class="sc">&gt;=</span> <span class="sc">-</span><span class="fl">0.09</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Group 2&quot;</span></span>
+<span id="cb64-5"><a href="id_03_model_evaluation.html#cb64-5" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb64-6"><a href="id_03_model_evaluation.html#cb64-6" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>species[<span class="fu">startsWith</span>(<span class="fu">rownames</span>(pfpv_ad_ctrl_res), <span class="st">&quot;PF3D7&quot;</span>)] <span class="ot">&lt;-</span> <span class="st">&quot;Pf&quot;</span></span>
+<span id="cb64-7"><a href="id_03_model_evaluation.html#cb64-7" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_res<span class="sc">$</span>species[<span class="fu">startsWith</span>(<span class="fu">rownames</span>(pfpv_ad_ctrl_res), <span class="st">&quot;PVP01&quot;</span>)] <span class="ot">&lt;-</span> <span class="st">&quot;Pv&quot;</span></span>
+<span id="cb64-8"><a href="id_03_model_evaluation.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pfpv_ad_ctrl_res<span class="sc">$</span>score_group, pfpv_ad_ctrl_res<span class="sc">$</span>species)</span></code></pre></div>
+<pre><code>##          
+##           Pf Pv
+##   Group 1 25 16
+##   Group 2 23 19</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb66-1"><a href="id_03_model_evaluation.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(pfpv_ad_ctrl_res<span class="sc">$</span>score_group, pfpv_ad_ctrl_res<span class="sc">$</span>species)</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pfpv_ad_ctrl_res$score_group and pfpv_ad_ctrl_res$species
+## p-value = 0.6584
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.4934941 3.3881568
+## sample estimates:
+## odds ratio 
+##   1.286776</code></pre>
+</div>
+<div id="labeled-known-antigen-accuracies" class="section level4 hasAnchor" number="3.2.2.3">
+<h4><span class="header-section-number">3.2.2.3</span> Labeled known antigen accuracies<a href="id_03_model_evaluation.html#labeled-known-antigen-accuracies" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb68-1"><a href="id_03_model_evaluation.html#cb68-1" aria-hidden="true" tabindex="-1"></a>calculate_known_antigen_accuracies <span class="ot">&lt;-</span> <span class="cf">function</span>(validation_data, baseline_scores) {</span>
+<span id="cb68-2"><a href="id_03_model_evaluation.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  accuracies <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb68-3"><a href="id_03_model_evaluation.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(validation_data)) {</span>
+<span id="cb68-4"><a href="id_03_model_evaluation.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    known_antigen <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">colnames</span>(validation_data))[i]</span>
+<span id="cb68-5"><a href="id_03_model_evaluation.html#cb68-5" aria-hidden="true" tabindex="-1"></a>    other_antigens <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">colnames</span>(validation_data))[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, i)]</span>
+<span id="cb68-6"><a href="id_03_model_evaluation.html#cb68-6" aria-hidden="true" tabindex="-1"></a>    accuracies <span class="ot">&lt;-</span> <span class="fu">c</span>(accuracies, <span class="fu">sum</span>(validation_data[other_antigens, known_antigen] <span class="sc">&gt;=</span> <span class="fl">0.5</span>) <span class="sc">/</span> <span class="fu">length</span>(validation_data[other_antigens, known_antigen]))</span>
+<span id="cb68-7"><a href="id_03_model_evaluation.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb68-8"><a href="id_03_model_evaluation.html#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(accuracies)</span>
+<span id="cb68-9"><a href="id_03_model_evaluation.html#cb68-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb68-10"><a href="id_03_model_evaluation.html#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="id_03_model_evaluation.html#cb68-11" aria-hidden="true" tabindex="-1"></a>pv_ad_ctrl_accuracies <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_accuracies</span>(pv_ad_ctrl, pv_data[<span class="st">&quot;OOB score filtered&quot;</span>])</span>
+<span id="cb68-12"><a href="id_03_model_evaluation.html#cb68-12" aria-hidden="true" tabindex="-1"></a>pf_ad_ctrl_accuracies <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_accuracies</span>(pf_ad_ctrl, pf_data[<span class="fu">rownames</span>(pf_ad_ctrl), <span class="st">&quot;OOB score filtered&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>])</span>
+<span id="cb68-13"><a href="id_03_model_evaluation.html#cb68-13" aria-hidden="true" tabindex="-1"></a>pfpv_ad_ctrl_accuracies <span class="ot">&lt;-</span> <span class="fu">calculate_known_antigen_accuracies</span>(pfpv_ad_ctrl, pfpv_data[<span class="st">&quot;OOB score filtered&quot;</span>])</span>
+<span id="cb68-14"><a href="id_03_model_evaluation.html#cb68-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="id_03_model_evaluation.html#cb68-15" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb68-16"><a href="id_03_model_evaluation.html#cb68-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PURF model&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Pv single model&quot;</span>, <span class="st">&quot;Pf single model&quot;</span>, <span class="st">&quot;Pv + Pf combined model&quot;</span>),</span>
+<span id="cb68-17"><a href="id_03_model_evaluation.html#cb68-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Accuracy (mean ± SD)&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb68-18"><a href="id_03_model_evaluation.html#cb68-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb68-19"><a href="id_03_model_evaluation.html#cb68-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">mean</span>(pv_ad_ctrl_accuracies)), <span class="st">&quot; ± &quot;</span>,</span>
+<span id="cb68-20"><a href="id_03_model_evaluation.html#cb68-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">sd</span>(pv_ad_ctrl_accuracies))</span>
+<span id="cb68-21"><a href="id_03_model_evaluation.html#cb68-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb68-22"><a href="id_03_model_evaluation.html#cb68-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb68-23"><a href="id_03_model_evaluation.html#cb68-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">mean</span>(pf_ad_ctrl_accuracies)), <span class="st">&quot; ± &quot;</span>,</span>
+<span id="cb68-24"><a href="id_03_model_evaluation.html#cb68-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">sd</span>(pf_ad_ctrl_accuracies))</span>
+<span id="cb68-25"><a href="id_03_model_evaluation.html#cb68-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb68-26"><a href="id_03_model_evaluation.html#cb68-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb68-27"><a href="id_03_model_evaluation.html#cb68-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">mean</span>(pfpv_ad_ctrl_accuracies)), <span class="st">&quot; ± &quot;</span>,</span>
+<span id="cb68-28"><a href="id_03_model_evaluation.html#cb68-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sprintf</span>(<span class="st">&quot;%0.2f&quot;</span>, <span class="fu">sd</span>(pfpv_ad_ctrl_accuracies))</span>
+<span id="cb68-29"><a href="id_03_model_evaluation.html#cb68-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb68-30"><a href="id_03_model_evaluation.html#cb68-30" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb68-31"><a href="id_03_model_evaluation.html#cb68-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb68-32"><a href="id_03_model_evaluation.html#cb68-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-33"><a href="id_03_model_evaluation.html#cb68-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-34"><a href="id_03_model_evaluation.html#cb68-34" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df, <span class="at">file =</span> <span class="st">&quot;./rdata/ad_ctrl_pred_accuracy.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb69-1"><a href="id_03_model_evaluation.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;./rdata/ad_ctrl_pred_accuracy.RData&quot;</span>)</span>
+<span id="cb69-2"><a href="id_03_model_evaluation.html#cb69-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a href="id_03_model_evaluation.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3e62f3fde0851be3549b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3e62f3fde0851be3549b">{"x":{"filter":"none","vertical":false,"data":[["Pf single model","Pv single model","Pf + Pv combined model"],["0.94 ± 0.01","0.90 ± 0.05","0.89 ± 0.02"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>PURF model<\/th>\n      <th>Accuracy (mean ± SD)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb70-1"><a href="id_03_model_evaluation.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.2.3 (2023-03-15)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur ... 10.16
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] grid      stats     graphics  grDevices utils     datasets  methods  
+## [8] base     
+## 
+## other attached packages:
+##  [1] ggrepel_0.9.3    umap_0.2.10.0    ggpubr_0.6.0     ggbeeswarm_0.7.2
+##  [5] cowplot_1.1.1    gghalves_0.1.4   ggdist_3.2.1     ggplot2_3.4.2   
+##  [9] DT_0.27          reticulate_1.28 
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.10          here_1.0.1           lattice_0.21-8      
+##  [4] tidyr_1.3.0          png_0.1-8            rprojroot_2.0.3     
+##  [7] digest_0.6.31        utf8_1.2.3           RSpectra_0.16-1     
+## [10] R6_2.5.1             backports_1.4.1      evaluate_0.21       
+## [13] highr_0.10           pillar_1.9.0         rlang_1.1.1         
+## [16] rstudioapi_0.14      car_3.1-2            jquerylib_0.1.4     
+## [19] R.utils_2.12.2       R.oo_1.25.0          Matrix_1.5-4        
+## [22] rmarkdown_2.21       styler_1.9.1         htmlwidgets_1.6.2   
+## [25] munsell_0.5.0        broom_1.0.4          compiler_4.2.3      
+## [28] vipor_0.4.5          xfun_0.39            askpass_1.1         
+## [31] pkgconfig_2.0.3      htmltools_0.5.5      openssl_2.0.6       
+## [34] tidyselect_1.2.0     tibble_3.2.1         bookdown_0.34       
+## [37] codetools_0.2-19     fansi_1.0.4          dplyr_1.1.2         
+## [40] withr_2.5.0          R.methodsS3_1.8.2    distributional_0.3.2
+## [43] jsonlite_1.8.4       gtable_0.3.3         lifecycle_1.0.3     
+## [46] magrittr_2.0.3       scales_1.2.1         carData_3.0-5       
+## [49] cli_3.6.1            cachem_1.0.8         farver_2.1.1        
+## [52] ggsignif_0.6.4       bslib_0.4.2          ellipsis_0.3.2      
+## [55] generics_0.1.3       vctrs_0.6.2          tools_4.2.3         
+## [58] R.cache_0.16.0       glue_1.6.2           beeswarm_0.4.0      
+## [61] purrr_1.0.1          crosstalk_1.2.0      abind_1.4-5         
+## [64] fastmap_1.1.1        yaml_2.3.7           colorspace_2.1-0    
+## [67] rstatix_0.7.2        knitr_1.42           sass_0.4.6</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python fold-hide"><code class="sourceCode python"><span id="cb72-1"><a href="id_03_model_evaluation.html#cb72-1" aria-hidden="true" tabindex="-1"></a>session_info.show()</span></code></pre></div>
+<pre><code>## -----
+## joblib              1.1.1
+## numpy               1.19.0
+## pandas              1.3.2
+## purf                NA
+## scipy               1.8.0
+## session_info        1.0.0
+## sklearn             0.24.2
+## -----
+## Python 3.8.2 (default, Mar 26 2020, 10:45:18) [Clang 4.0.1 (tags/RELEASE_401/final)]
+## macOS-10.16-x86_64-i386-64bit
+## -----
+## Session information updated at 2023-05-18 12:34</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="id_02_model_training.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="id_04_model_comparisons.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["main_notebook.pdf", "PDF"]],
+"search": false,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

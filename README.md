@@ -1,2 +1,2 @@
 # malaria-antigen-identification-pv
-🔬 Research notebook of malaria antigen identification (P. falciparum)
+🔬 Research notebook of malaria antigen identification (*P. vivax*)
